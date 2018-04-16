@@ -14,7 +14,7 @@ export default {
         }, {
             id: 'buttons',
             name: 'Кнопка',
-            types: ['smallButton', 'mediumButton', 'bigButton']
+            types: ['bigButton']
         }],
         /*группы виджетов*/
         library: [{
@@ -32,7 +32,7 @@ export default {
         }, {
             title: 'Кнопка',
             desc: 'Подходит, если вы делаете отдельную страничку или блок, рассказывающий о фонде. В конце вы можете разместить  кнопку, ведущую на платежную форму. Есть в трех размерах.',
-            types: ['smallButton', 'mediumButton', 'bigButton']
+            types: [ 'bigButton']
         }],
         /*виджеты и их параметры*/
         types: {
