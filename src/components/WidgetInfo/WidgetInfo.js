@@ -42,7 +42,7 @@ export default class WidgetInfo extends Component {
 
         const querystring = new URLSearchParams(params);
 
-        const urlWidget = `${widgetUrl}/${link}?${querystring.toString()}`;
+        const urlWidget = `${widgetUrl}${link}?${querystring.toString()}`;
 
         const code = `<iframe width="${width}" height="${height}" src="${urlWidget}" allowtransparency="true" scrolling="no" frameborder="0"></iframe>`;
 

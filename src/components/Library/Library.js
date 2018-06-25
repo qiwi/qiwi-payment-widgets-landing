@@ -21,7 +21,7 @@ export default class Library extends Component {
 
                         if(types[type].form === 'link') {
 
-                            return (<LinkInfo id={type} merchantAlias={merchantAlias} addMessage={addMessage}/>);
+                            return (<LinkInfo id={type} merchantAlias={merchantAlias} addMessage={addMessage} widgetUrl={widgetUrl}/>);
                         }
 
                         return (<WidgetInfo id={type} widget={types[type]} widgetUrl={widgetUrl} public_key={public_key} addMessage={addMessage}/>);

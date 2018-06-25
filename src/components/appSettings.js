@@ -1,6 +1,5 @@
 export default {
     idWidgetsBlock: 'widgets',
-    widgetUrl: 'https://widget.qiwi.com',
     widgetsLibrary: {
         /*пункты меню*/
         navigation: [{

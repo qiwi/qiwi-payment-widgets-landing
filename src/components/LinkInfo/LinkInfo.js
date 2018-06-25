@@ -3,6 +3,7 @@ import { h, Component } from 'preact';
 import 'url-search-params-polyfill';
 
 import './LinkInfo.scss';
+import config from '../../config/default';
 
 
 
@@ -24,11 +25,9 @@ export default class LinkInfo extends Component {
 
     }
 
-    render({ id, merchantAlias}, {}){
+    render({ id, merchantAlias, widgetUrl}, {}){
 
-        const url = 'https://my.qiwi.com/';
-
-        const link = `${url}${merchantAlias}`;
+        const link = `${widgetUrl}${merchantAlias}`;
 
 
         return (<div class="link-info" id={id}>

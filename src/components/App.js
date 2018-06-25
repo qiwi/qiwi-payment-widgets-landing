@@ -9,6 +9,7 @@ import MessageBox from './MessageBox';
 import ThankingBlock from './ThankingBlock';
 
 import appSettings from './appSettings';
+import config from '../config/default';
 
 export default class App extends Component {
 
@@ -79,11 +80,7 @@ export default class App extends Component {
 
         const self = this;
 
-        let url = 'https://my.qiwi.com/partners_api/merchant_info';
-
-        if(process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
-            url = 'http://s3705.qiwi.com/partners_api/merchant_info';
-        }
+        let url = config.url;
 
         let param = `merchant_public_key=${merchantPublicKey}`;
 
@@ -159,7 +156,7 @@ export default class App extends Component {
             <Header idWidgetsBlock={idWidgetsBlock} merchantName={merchantName} public_key={merchantPublicKey}/>
             <main>
                 <About/>
-                <Widgets {...this.appSettings} public_key={merchantPublicKey} merchantAlias={merchantAlias} addMessage={this.addMessage}/>
+                <Widgets {...this.appSettings} widgetUrl={config.widgetUrl}  public_key={merchantPublicKey} merchantAlias={merchantAlias} addMessage={this.addMessage}/>
                 <div class="thanking">
                     <div class="thanking__text">
                         <ThankingBlock email={merchantContact || qiwiEmail} contactDesc={merchantContactDesc || qiwiContactDesc} onClick={this.analyticsHandler('make.email', 'Make email from thanking block')}/>
