@@ -80,7 +80,7 @@ export default class App extends Component {
 
         const self = this;
 
-        let url = config.url;
+        let url = config.url + config.pathToApi;
 
         let param = `merchant_public_key=${merchantPublicKey}`;
 

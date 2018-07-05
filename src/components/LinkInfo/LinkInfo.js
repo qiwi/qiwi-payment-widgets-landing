@@ -25,9 +25,9 @@ export default class LinkInfo extends Component {
 
     }
 
-    render({ id, merchantAlias, widgetUrl}, {}){
+    render({ id, merchantAlias}, {}){
 
-        const link = `${widgetUrl}${merchantAlias}`;
+        const link = `${config.url}${merchantAlias}`;
 
 
         return (<div class="link-info" id={id}>
