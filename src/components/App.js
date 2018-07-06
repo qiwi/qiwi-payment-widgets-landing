@@ -20,9 +20,9 @@ export default class App extends Component {
 
         this.state = {
             message: '',
-            merchantName: '',
-            merchantAlias: '',
-            merchantPublicKey: '',
+            widgetMerchantName: '',
+            widgetAliasCode: '',
+            merchantSitePublicKey: '',
             merchantContact: '',
             merchantNotVeryfied: false
         }
@@ -33,24 +33,21 @@ export default class App extends Component {
 
         const self = this;
 
-        const merchantPublicKey = this.getPublicKey();
+        const merchantSitePublicKey = this.getPublicKey();
 
-        const merchantAlias = this.getAlias();
+        const widgetAliasCode = this.getAlias();
 
-        if(merchantPublicKey || merchantAlias) {
+        if(merchantSitePublicKey || widgetAliasCode) {
 
-            this.getMerchant(merchantPublicKey, merchantAlias).then(data => {
-
-                if(data.result.merchant_name) {
+            this.getMerchant(merchantSitePublicKey, widgetAliasCode).then(data => {
+                if(data.result.widget_merchant_name) {
                     self.setState({
-                        merchantName: data.result.merchant_name,
-                        merchantContact: data.result.merchant_email,
-                        merchantContactDesc: data.result.merchant_contacts_html,
-                        merchantAlias: data.result.merchant_alias_code,
-                        merchantPublicKey: data.result.merchant_public_key
+                        widgetMerchantName: data.result.widget_merchant_name,
+                        merchantContact: data.result.widget_merchant_email,
+                        widgetAliasCode: data.result.widget_alias_code,
+                        merchantSitePublicKey: data.result.merchant_site_public_key
                     });
-
-                    self.changeTabTitle(data.result.merchant_name);
+                    self.changeTabTitle(data.result.widget_merchant_name);
                 }
             });
         } else {
@@ -76,17 +73,17 @@ export default class App extends Component {
     }
 
 
-    getMerchant = (merchantPublicKey, merchantAlias) => {
+    getMerchant = (merchantSitePublicKey, widgetAliasCode) => {
 
         const self = this;
 
         let url = config.url;
 
-        let param = `merchant_public_key=${merchantPublicKey}`;
+        let param = `merchant_site_public_key=${merchantSitePublicKey}`;
 
 
-        if(merchantAlias && !merchantPublicKey) {
-            param = `merchant_alias_code=${merchantAlias}`;
+        if(widgetAliasCode && !merchantSitePublicKey) {
+            param = `widget_alias_code=${widgetAliasCode}`;
         }
 
         return fetch(`${url}?${param}`, {
@@ -143,25 +140,23 @@ export default class App extends Component {
         });
     }
 
-    render({},{message, merchantName, merchantPublicKey, merchantAlias, merchantContact, merchantContactDesc, merchantNotVeryfied}){
+    render({},{message, widgetMerchantName, merchantSitePublicKey, widgetAliasCode, merchantContact, merchantNotVeryfied}){
 
         const {idWidgetsBlock} = this.appSettings;
 
-        const qiwiEmail = 'widget@qiwi.com';
-
-        const qiwiContactDesc = 'Если вы хотите получить больше информации о возможностях сотрудничества, свяжитесь с нами:';
+        const contactDesc = 'Если вы хотите получить больше информации о возможностях сотрудничества, свяжитесь с нами:';
 
         return (<div class={merchantNotVeryfied?'page--missed-public-key-error': ''}>
             {merchantNotVeryfied?<div className="error-panel"><div className="error-panel__text">Для участия в партнерской программе вам требуется получить персональную ссылку. Если у вас ее нет и вы хотели бы ее получить, свяжитесь с нами по адресу <a href="mailto:widget@qiwi.com" onClick={this.analyticsHandler('make.email', 'Make email to QIWI from error panel')}>widget@qiwi.com</a></div></div>:null}
-            <Header idWidgetsBlock={idWidgetsBlock} merchantName={merchantName} public_key={merchantPublicKey}/>
+            <Header idWidgetsBlock={idWidgetsBlock} widgetMerchantName={widgetMerchantName} public_key={merchantSitePublicKey}/>
             <main>
                 <About/>
-                <Widgets {...this.appSettings} widgetUrl={config.widgetUrl}  public_key={merchantPublicKey} merchantAlias={merchantAlias} addMessage={this.addMessage}/>
-                <div class="thanking">
+                <Widgets {...this.appSettings} widgetUrl={config.widgetUrl}  public_key={merchantSitePublicKey} widgetAliasCode={widgetAliasCode} addMessage={this.addMessage}/>
+                {merchantContact?<div class="thanking">
                     <div class="thanking__text">
-                        <ThankingBlock email={merchantContact || qiwiEmail} contactDesc={merchantContactDesc || qiwiContactDesc} onClick={this.analyticsHandler('make.email', 'Make email from thanking block')}/>
+                        <ThankingBlock email={merchantContact} contactDesc={contactDesc} onClick={this.analyticsHandler('make.email', 'Make email from thanking block')}/>
                     </div>
-                </div>
+                </div>:null}
                 <MessageBox message={message}/>
             </main>
             <footer>© 2016, КИВИ Банк (АО), лицензия ЦБ РФ № 2241</footer>

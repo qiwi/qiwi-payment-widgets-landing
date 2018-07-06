@@ -9,7 +9,7 @@ export default class Library extends Component {
 
     render({widgetsLibrary}){
 
-        const { library, types, widgetUrl, public_key, addMessage, merchantAlias } = widgetsLibrary;
+        const { library, types, widgetUrl, public_key, addMessage, widgetAliasCode } = widgetsLibrary;
 
         return (<div class="library">
 
@@ -21,7 +21,7 @@ export default class Library extends Component {
 
                         if(types[type].form === 'link') {
 
-                            return (<LinkInfo id={type} merchantAlias={merchantAlias} addMessage={addMessage} widgetUrl={widgetUrl}/>);
+                            return (<LinkInfo id={type} widgetAliasCode={widgetAliasCode} addMessage={addMessage} widgetUrl={widgetUrl}/>);
                         }
 
                         return (<WidgetInfo id={type} widget={types[type]} widgetUrl={widgetUrl} public_key={public_key} addMessage={addMessage}/>);

@@ -8,8 +8,8 @@ import widgetPic from './assets/widget-pic.png';
 /*<a href={'/?public_key='+public_key} class="header__logo"><img src={logo} alt="logo" width="140" height="61" /></a>*/
 
 export default class Header extends Component {
-    render({ idWidgetsBlock, merchantName, public_key }) {
-        const defaultMerchantName = 'Наименование организации';
+    render({ idWidgetsBlock, widgetMerchantName, public_key }) {
+        const defaultwidgetMerchantName = 'Наименование организации';
 
         return (
             <header class="header">
@@ -22,8 +22,8 @@ export default class Header extends Component {
                         добрым делам!
                     </h1>
                     <p class="header__description">
-                        {merchantName
-                            ? `Размести платежную форму у себя на сайте и поддержи ${merchantName}.`
+                        {widgetMerchantName
+                            ? `Размести платежную форму у себя на сайте и поддержи ${widgetMerchantName}.`
                             : 'Размести платежную форму у себя на сайте и поддержи благотворительность.'}
                     </p>
                     <a
@@ -52,7 +52,7 @@ export default class Header extends Component {
                         </a>
                     </div>
                     <div class="header__widget-title">
-                        {merchantName || defaultMerchantName}
+                        {widgetMerchantName || defaultwidgetMerchantName}
                     </div>
                     <div class="header__widget-button">Помочь</div>
                     <div class="header__widget-link header__widget-link--lowwer">
@@ -61,7 +61,7 @@ export default class Header extends Component {
                         </a>
                     </div>
                     <div class="header__widget-title header__widget-title--second">
-                        {merchantName || defaultMerchantName}
+                        {widgetMerchantName || defaultwidgetMerchantName}
                     </div>
                 </div>
             </header>

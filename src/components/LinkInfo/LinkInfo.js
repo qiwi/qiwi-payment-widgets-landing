@@ -25,9 +25,9 @@ export default class LinkInfo extends Component {
 
     }
 
-    render({ id, merchantAlias, widgetUrl}, {}){
+    render({ id, widgetAliasCode, widgetUrl}, {}){
 
-        const link = `${widgetUrl}${merchantAlias}`;
+        const link = `${widgetUrl}${widgetAliasCode}`;
 
 
         return (<div class="link-info" id={id}>
@@ -37,7 +37,7 @@ export default class LinkInfo extends Component {
 
             <div class="link-info__link-text">{link}</div>
 
-            <button type="button" class="link-info__get-code-button" disabled={!merchantAlias} onClick={() => {
+            <button type="button" class="link-info__get-code-button" disabled={!widgetAliasCode} onClick={() => {
                     this.copyToClipboard(link);
 
                      dataLayer.push({
