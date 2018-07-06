@@ -25,10 +25,9 @@ export default class LinkInfo extends Component {
 
     }
 
-    render({ id, widgetAliasCode, widgetUrl}, {}){
+    render({ id, widgetAliasCode}, {}){
 
-        const link = `${widgetUrl}${widgetAliasCode}`;
-
+        const link = `${config.url}${widgetAliasCode}`;
 
         return (<div class="link-info" id={id}>
             <h3 class="link-info__title"><a href={`#${id}`}></a></h3>
