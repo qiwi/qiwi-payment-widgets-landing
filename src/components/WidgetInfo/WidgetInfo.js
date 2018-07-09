@@ -34,11 +34,11 @@ export default class WidgetInfo extends Component {
 
     }
 
-    render({widget, id, widgetUrl, public_key}, {isCodeHidden}){
+    render({widget, id, widgetUrl, publicKey}, {isCodeHidden}){
 
         const { title, height, width, transparent, params={}, link} = widget;
 
-        params['public_key'] = public_key;
+        params['publicKey'] = publicKey;
 
         const querystring = new URLSearchParams(params);
 
@@ -61,7 +61,7 @@ export default class WidgetInfo extends Component {
                         'event': 'copy.code',
                         'eventAction': `Code of ${title} widget copied`
                     });
-                }} disabled={!public_key}> &lt;/&gt; Скопировать код</button>
+                }} disabled={!publicKey}> &lt;/&gt; Скопировать код</button>
 
             <div class={`widget-info__code ${isCodeHidden?'widget-info__code--hidden':''}`}>{code}</div>
         </div>);

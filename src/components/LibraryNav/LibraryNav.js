@@ -34,7 +34,7 @@ export default class LibraryNav extends Component {
             let Y = topForPos <= 0?Math.abs(topForPos)+78:0;
 
             /*Если появится плашка с ошибкой добавим ее высоту 86*/
-            if(!this.props.public_key) {
+            if(!this.props.publicKey) {
                 Y += 86;
             }
 

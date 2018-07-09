@@ -40,14 +40,14 @@ export default class App extends Component {
         if(merchantSitePublicKey || widgetAliasCode) {
 
             this.getWidget(merchantSitePublicKey, widgetAliasCode).then(data => {
-                if(data.result.widget_merchant_name) {
+                if(data.result.widgetMerchantName) {
                     self.setState({
-                        widgetMerchantName: data.result.widget_merchant_name,
-                        merchantContact: data.result.widget_merchant_email,
-                        widgetAliasCode: data.result.widget_alias_code,
-                        merchantSitePublicKey: data.result.merchant_site_public_key
+                        widgetMerchantName: data.result.widgetMerchantName,
+                        merchantContact: data.result.widgetMerchantEmail,
+                        widgetAliasCode: data.result.widgetAliasCode,
+                        merchantSitePublicKey: data.result.merchantSitePublicKey
                     });
-                    self.changeTabTitle(data.result.widget_merchant_name);
+                    self.changeTabTitle(data.result.widgetMerchantName);
                 }
             });
         } else {
@@ -69,7 +69,7 @@ export default class App extends Component {
     }
 
     getPublicKey = () => {
-        return new URLSearchParams (window.location.search).get('public_key') || '';
+        return new URLSearchParams (window.location.search).get('publicKey') || '';
     }
 
 
@@ -79,11 +79,11 @@ export default class App extends Component {
 
         let url = config.url + config.pathToApi;
 
-        let param = `merchant_site_public_key=${merchantSitePublicKey}`;
+        let param = `merchantSitePublicKey=${merchantSitePublicKey}`;
 
 
         if(widgetAliasCode && !merchantSitePublicKey) {
-            param = `widget_alias_code=${widgetAliasCode}`;
+            param = `widgetAliasCode=${widgetAliasCode}`;
         }
 
         return fetch(`${url}?${param}`, {
@@ -148,10 +148,10 @@ export default class App extends Component {
 
         return (<div class={merchantNotVeryfied?'page--missed-public-key-error': ''}>
             {merchantNotVeryfied?<div className="error-panel"><div className="error-panel__text">Для участия в партнерской программе вам требуется получить персональную ссылку. Если у вас ее нет и вы хотели бы ее получить, свяжитесь с нами по адресу <a href="mailto:widget@qiwi.com" onClick={this.analyticsHandler('make.email', 'Make email to QIWI from error panel')}>widget@qiwi.com</a></div></div>:null}
-            <Header idWidgetsBlock={idWidgetsBlock} widgetMerchantName={widgetMerchantName} public_key={merchantSitePublicKey}/>
+            <Header idWidgetsBlock={idWidgetsBlock} widgetMerchantName={widgetMerchantName} publicKey={merchantSitePublicKey}/>
             <main>
                 <About/>
-                <Widgets {...this.appSettings} widgetUrl={config.widgetUrl}  public_key={merchantSitePublicKey} widgetAliasCode={widgetAliasCode} addMessage={this.addMessage}/>
+                <Widgets {...this.appSettings} widgetUrl={config.widgetUrl}  publicKey={merchantSitePublicKey} widgetAliasCode={widgetAliasCode} addMessage={this.addMessage}/>
                 {merchantContact?<div class="thanking">
                     <div class="thanking__text">
                         <ThankingBlock email={merchantContact} contactDesc={contactDesc} onClick={this.analyticsHandler('make.email', 'Make email from thanking block')}/>

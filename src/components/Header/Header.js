@@ -5,10 +5,10 @@ import './Header.scss';
 import logo from './assets/qiwi-logo.svg';
 import widgetPic from './assets/widget-pic.png';
 
-/*<a href={'/?public_key='+public_key} class="header__logo"><img src={logo} alt="logo" width="140" height="61" /></a>*/
+/*<a href={'/?publicKey='+publicKey} class="header__logo"><img src={logo} alt="logo" width="140" height="61" /></a>*/
 
 export default class Header extends Component {
-    render({ idWidgetsBlock, widgetMerchantName, public_key }) {
+    render({ idWidgetsBlock, widgetMerchantName, publicKey }) {
         const defaultwidgetMerchantName = 'Наименование организации';
 
         return (
@@ -47,7 +47,7 @@ export default class Header extends Component {
                         class="header__widgets-pic"
                     />
                     <div class="header__widget-link header__widget-link--upper">
-                        <a href={'/?public_key=' + public_key}>
+                        <a href={'/?publicKey=' + publicKey}>
                             У меня есть сайт
                         </a>
                     </div>
@@ -56,7 +56,7 @@ export default class Header extends Component {
                     </div>
                     <div class="header__widget-button">Помочь</div>
                     <div class="header__widget-link header__widget-link--lowwer">
-                        <a href={'/?public_key=' + public_key}>
+                        <a href={'/?publicKey=' + publicKey}>
                             У меня есть сайт
                         </a>
                     </div>

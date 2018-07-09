@@ -1,5 +1,5 @@
 export default {
-    url: 'https://my-test.qiwi.com/',
-    pathToApi: 'partners_api/widget_full_info',
-    widgetUrl: 'https://widget-test.qiwi.com/',
+    url: 'http://localhost:9922/',
+    pathToApi: 'api/widgets/widget-full-info',
+    widgetUrl: 'http://localhost:9290/',
 }
