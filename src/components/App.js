@@ -39,7 +39,7 @@ export default class App extends Component {
 
         if(merchantSitePublicKey || widgetAliasCode) {
 
-            this.getMerchant(merchantSitePublicKey, widgetAliasCode).then(data => {
+            this.getWidget(merchantSitePublicKey, widgetAliasCode).then(data => {
                 if(data.result.widget_merchant_name) {
                     self.setState({
                         widgetMerchantName: data.result.widget_merchant_name,
@@ -73,7 +73,7 @@ export default class App extends Component {
     }
 
 
-    getMerchant = (merchantSitePublicKey, widgetAliasCode) => {
+    getWidget = (merchantSitePublicKey, widgetAliasCode) => {
 
         const self = this;
 
@@ -99,7 +99,7 @@ export default class App extends Component {
 
                     dataLayer.push({
                         'event': 'load.error',
-                        'eventAction': 'Mechant info load error'
+                        'eventAction': 'Widget info load error'
                     });
 
                     throw new Error('NotFoundError')
