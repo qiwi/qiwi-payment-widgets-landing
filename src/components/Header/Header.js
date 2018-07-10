@@ -9,7 +9,7 @@ import widgetPic from './assets/widget-pic.png';
 
 export default class Header extends Component {
     render({ idWidgetsBlock, widgetMerchantName, publicKey }) {
-        const defaultwidgetMerchantName = 'Наименование организации';
+        const defaultWidgetMerchantName = 'Наименование организации';
 
         return (
             <header class="header">
@@ -52,7 +52,7 @@ export default class Header extends Component {
                         </a>
                     </div>
                     <div class="header__widget-title">
-                        {widgetMerchantName || defaultwidgetMerchantName}
+                        {widgetMerchantName || defaultWidgetMerchantName}
                     </div>
                     <div class="header__widget-button">Помочь</div>
                     <div class="header__widget-link header__widget-link--lowwer">
@@ -61,7 +61,7 @@ export default class Header extends Component {
                         </a>
                     </div>
                     <div class="header__widget-title header__widget-title--second">
-                        {widgetMerchantName || defaultwidgetMerchantName}
+                        {widgetMerchantName || defaultWidgetMerchantName}
                     </div>
                 </div>
             </header>
