@@ -34,7 +34,7 @@ export default class WidgetInfo extends Component {
 
     }
 
-    render({widget, id, widgetUrl, publicKey}, {isCodeHidden}){
+    render({widget, id, widgetUrl, noCache, publicKey}, {isCodeHidden}){
 
         const { title, height, width, transparent, params={}, link} = widget;
 
@@ -46,6 +46,9 @@ export default class WidgetInfo extends Component {
 
         const code = `<iframe width="${width}" height="${height}" src="${urlWidget}" allowtransparency="true" scrolling="no" frameborder="0"></iframe>`;
 
+        if(noCache) {
+            urlWidget.append('noCache', 1);
+        }
 
         return (<div class="widget-info" id={id}>
             <h3 class="widget-info__title"><a href={`#${id}`}>{title}</a></h3>
