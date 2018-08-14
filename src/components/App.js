@@ -41,7 +41,6 @@ export default class App extends Component {
         const noCacheFlag = this.getNoCacheFlag();
 
         if(merchantSitePublicKey || widgetAliasCode) {
-
             this.getWidget(merchantSitePublicKey, widgetAliasCode, noCacheFlag).then(data => {
                 if(data.result.widgetMerchantName) {
                     self.setState({
@@ -49,7 +48,7 @@ export default class App extends Component {
                         merchantContact: data.result.widgetMerchantEmail,
                         widgetAliasCode: data.result.widgetAliasCode,
                         merchantSitePublicKey: data.result.merchantSitePublicKey,
-                        noCacheFlag
+                        noCacheFlag: noCacheFlag
                     });
                     self.changeTabTitle(data.result.widgetMerchantName);
                 }
@@ -94,7 +93,7 @@ export default class App extends Component {
         }
 
         if(noCacheFlag) {
-            params += `&noCache=1`;
+            params += `&noCache=${noCacheFlag}`;
         }
 
         return fetch(`${url}?${params}`, {
@@ -162,7 +161,7 @@ export default class App extends Component {
             <Header idWidgetsBlock={idWidgetsBlock} widgetMerchantName={widgetMerchantName} publicKey={merchantSitePublicKey}/>
             <main>
                 <About/>
-                <Widgets {...this.appSettings} widgetUrl={config.widgetUrl}  publicKey={merchantSitePublicKey} noCache={noCacheFlag} widgetAliasCode={widgetAliasCode} addMessage={this.addMessage}/>
+                <Widgets {...this.appSettings} widgetUrl={config.widgetUrl}  publicKey={merchantSitePublicKey} noCacheFlag={noCacheFlag} widgetAliasCode={widgetAliasCode} addMessage={this.addMessage}/>
                 {merchantContact?<div class="thanking">
                     <div class="thanking__text">
                         <ThankingBlock email={merchantContact} contactDesc={contactDesc} onClick={this.analyticsHandler('make.email', 'Make email from thanking block')}/>

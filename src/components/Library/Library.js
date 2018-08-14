@@ -9,7 +9,7 @@ export default class Library extends Component {
 
     render({widgetsLibrary}){
 
-        const { library, types, widgetUrl, publicKey, noCache, addMessage, widgetAliasCode } = widgetsLibrary;
+        const { library, types, widgetUrl, publicKey, noCacheFlag, addMessage, widgetAliasCode } = widgetsLibrary;
 
         return (<div class="library">
 
@@ -24,7 +24,7 @@ export default class Library extends Component {
                             return (<LinkInfo id={type} widgetAliasCode={widgetAliasCode} addMessage={addMessage}/>);
                         }
 
-                        return (<WidgetInfo id={type} widget={types[type]} widgetUrl={widgetUrl} noCache={noCache} publicKey={publicKey} addMessage={addMessage}/>);
+                        return (<WidgetInfo id={type} widget={types[type]} widgetUrl={widgetUrl} noCacheFlag={noCacheFlag} publicKey={publicKey} addMessage={addMessage}/>);
                     })}
 
                 </article>);
