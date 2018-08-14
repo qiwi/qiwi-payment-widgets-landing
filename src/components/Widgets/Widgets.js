@@ -21,12 +21,12 @@ export default class Widgets extends Component {
         });
     };
 
-    render({idWidgetsBlock, widgetsLibrary, widgetAliasCode, widgetUrl, publicKey, addMessage}, {topForPos}){
+    render({idWidgetsBlock, widgetsLibrary, widgetAliasCode, widgetUrl, publicKey, noCacheFlag, addMessage}, {topForPos}){
         return (<section class="widgets" id={idWidgetsBlock}>
             <h1 class="widgets__title">Выберите нужный размер и скопируйте код для внедрения на собственный сайт</h1>
             <div class="widgets__library" ref={ c => this.widgetLibraryBlock = c }>
                 <LibraryNav widgetsLibrary={widgetsLibrary} topForPos={topForPos} publicKey={publicKey}/>
-                <Library widgetsLibrary={{...widgetsLibrary,widgetUrl,publicKey,addMessage,widgetAliasCode}}/>
+                <Library widgetsLibrary={{...widgetsLibrary,widgetUrl,publicKey,noCacheFlag,addMessage,widgetAliasCode}}/>
             </div>
 
         </section>);
