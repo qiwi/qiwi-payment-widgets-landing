@@ -24,7 +24,8 @@ export default class App extends Component {
             widgetAliasCode: '',
             merchantSitePublicKey: '',
             merchantContact: '',
-            merchantNotVeryfied: false
+            merchantNotVeryfied: false,
+            noCacheFlag: ''
         }
     }
 
@@ -37,15 +38,17 @@ export default class App extends Component {
 
         const widgetAliasCode = this.getAlias();
 
-        if(merchantSitePublicKey || widgetAliasCode) {
+        const noCacheFlag = this.getNoCacheFlag();
 
-            this.getWidget(merchantSitePublicKey, widgetAliasCode).then(data => {
+        if(merchantSitePublicKey || widgetAliasCode) {
+            this.getWidget(merchantSitePublicKey, widgetAliasCode, noCacheFlag).then(data => {
                 if(data.result.widgetMerchantName) {
                     self.setState({
                         widgetMerchantName: data.result.widgetMerchantName,
                         merchantContact: data.result.widgetMerchantEmail,
                         widgetAliasCode: data.result.widgetAliasCode,
-                        merchantSitePublicKey: data.result.merchantSitePublicKey
+                        merchantSitePublicKey: data.result.merchantSitePublicKey,
+                        noCacheFlag: noCacheFlag
                     });
                     self.changeTabTitle(data.result.widgetMerchantName);
                 }
@@ -72,21 +75,28 @@ export default class App extends Component {
         return new URLSearchParams (window.location.search).get('publicKey') || '';
     }
 
+    getNoCacheFlag = () => {
+        return new URLSearchParams (window.location.search).get('noCache') || '';
+    }
 
-    getWidget = (merchantSitePublicKey, widgetAliasCode) => {
+    getWidget = (merchantSitePublicKey, widgetAliasCode, noCacheFlag) => {
 
         const self = this;
 
         let url = config.url + config.pathToApi;
 
-        let param = `merchantSitePublicKey=${merchantSitePublicKey}`;
+        let params = `merchantSitePublicKey=${merchantSitePublicKey}`;
 
 
         if(widgetAliasCode && !merchantSitePublicKey) {
-            param = `widgetAliasCode=${widgetAliasCode}`;
+            params = `widgetAliasCode=${widgetAliasCode}`;
         }
 
-        return fetch(`${url}?${param}`, {
+        if(noCacheFlag) {
+            params += `&noCache=${noCacheFlag}`;
+        }
+
+        return fetch(`${url}?${params}`, {
                 mode: 'cors'
             })
             .then(response => {
@@ -140,7 +150,7 @@ export default class App extends Component {
         });
     }
 
-    render({},{message, widgetMerchantName, merchantSitePublicKey, widgetAliasCode, merchantContact, merchantNotVeryfied}){
+    render({},{message, widgetMerchantName, merchantSitePublicKey, widgetAliasCode, merchantContact, merchantNotVeryfied, noCacheFlag}){
 
         const {idWidgetsBlock} = this.appSettings;
 
@@ -151,7 +161,7 @@ export default class App extends Component {
             <Header idWidgetsBlock={idWidgetsBlock} widgetMerchantName={widgetMerchantName} publicKey={merchantSitePublicKey}/>
             <main>
                 <About/>
-                <Widgets {...this.appSettings} widgetUrl={config.widgetUrl}  publicKey={merchantSitePublicKey} widgetAliasCode={widgetAliasCode} addMessage={this.addMessage}/>
+                <Widgets {...this.appSettings} widgetUrl={config.widgetUrl}  publicKey={merchantSitePublicKey} noCacheFlag={noCacheFlag} widgetAliasCode={widgetAliasCode} addMessage={this.addMessage}/>
                 {merchantContact?<div class="thanking">
                     <div class="thanking__text">
                         <ThankingBlock email={merchantContact} contactDesc={contactDesc} onClick={this.analyticsHandler('make.email', 'Make email from thanking block')}/>
