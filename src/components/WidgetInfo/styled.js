@@ -26,6 +26,18 @@ export const WidgetCodeTextarea = styled.textarea`
     left: -5000px;
 `;
 
+export const Title = styled.h1`
+    font-family: "Museo","Helvetica Neue","Helvetica","Arial",sans-serif;
+    font-size: 30px;
+    font-weight: 900;
+    line-height: 1.2;
+    text-align: left;
+    margin: 0 auto;
+    padding: 0;
+    margin: 0 0 24px;
+    width: 460px;
+`;
+
 export const WidgetCodeBlock = styled.div`
     font-family: 'Roboto Mono', monospace;
     font-size: 16px;

@@ -2,15 +2,8 @@ import {h, Component} from 'preact';
 
 import 'url-search-params-polyfill';
 
-import {Container, Link, WidgetIframe, WidgetCodeBlock, WidgetCodeTextarea, ButtonCopyCode} from "./styled";
+import {Container, Link, WidgetIframe, Title, WidgetCodeBlock, WidgetCodeTextarea, ButtonCopyCode} from "./styled";
 import OptionalRenderer from "../OptionalRenderer/OptionalRenderer";
-import Title from "../Title/Title";
-import styled from 'styled-components';
-
-const StyledTitle = styled(Title)`
-    margin: 0 0 24px;
-    width: 460px;
-`;
 
 export default class WidgetInfo extends Component {
 
@@ -55,8 +48,8 @@ export default class WidgetInfo extends Component {
             urlWidget += `&noCache=${noCacheFlag}`;
         }
 
-        return (<Container class="widget-info" id={id}>
-            <StyledTitle><Link href={`#${id}`}>{title}</Link></StyledTitle>
+        return (<Container id={id}>
+            <Title><Link href={`#${id}`}>{title}</Link></Title>
 
             <WidgetIframe width={width}
                           height={height}

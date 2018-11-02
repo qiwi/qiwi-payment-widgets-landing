@@ -3,7 +3,7 @@ import { h, Component } from 'preact';
 import LibraryNav from '../LibraryNav';
 import Library from '../Library';
 
-import './Widgets.scss';
+import {WidgetsSection, Title, WidgetsLibraryBlock} from "./styled";
 
 export default class Widgets extends Component {
 
@@ -22,13 +22,13 @@ export default class Widgets extends Component {
     };
 
     render({idWidgetsBlock, widgetsLibrary, widgetAliasCode, widgetUrl, publicKey, noCacheFlag, addMessage}, {topForPos}){
-        return (<section class="widgets" id={idWidgetsBlock}>
-            <h1 class="widgets__title">Выберите нужный размер и скопируйте код для внедрения на собственный сайт</h1>
-            <div class="widgets__library" ref={ c => this.widgetLibraryBlock = c }>
+        return (<WidgetsSection id={idWidgetsBlock}>
+            <Title>Выберите нужный размер и скопируйте код для внедрения на собственный сайт</Title>
+            <WidgetsLibraryBlock ref={c => this.widgetLibraryBlock = c }>
                 <LibraryNav widgetsLibrary={widgetsLibrary} topForPos={topForPos} publicKey={publicKey}/>
                 <Library widgetsLibrary={{...widgetsLibrary,widgetUrl,publicKey,noCacheFlag,addMessage,widgetAliasCode}}/>
-            </div>
+            </WidgetsLibraryBlock>
 
-        </section>);
+        </WidgetsSection>);
     }
 }
