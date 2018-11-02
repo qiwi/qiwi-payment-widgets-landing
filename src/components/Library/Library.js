@@ -2,8 +2,7 @@ import { h, Component } from 'preact';
 
 import WidgetInfo from '../WidgetInfo';
 import LinkInfo from '../LinkInfo';
-
-import './Library.scss';
+import {LibraryContainer, LibraryGroup, GroupDescription, GroupTitle} from "./styled";
 
 export default class Library extends Component {
 
@@ -11,12 +10,12 @@ export default class Library extends Component {
 
         const { library, types, widgetUrl, publicKey, noCacheFlag, addMessage, widgetAliasCode } = widgetsLibrary;
 
-        return (<div class="library">
+        return (<LibraryContainer>
 
             {library.map((group) => {
-                return (<article class="library__group">
-                    <h2 class="library__title">{group.title}</h2>
-                    <p class="library__description">{group.desc}</p>
+                return (<LibraryGroup>
+                    <GroupTitle>{group.title}</GroupTitle>
+                    <GroupDescription>{group.desc}</GroupDescription>
                     {group.types.map((type) => {
 
                         if(types[type].form === 'link') {
@@ -27,9 +26,9 @@ export default class Library extends Component {
                         return (<WidgetInfo id={type} widget={types[type]} widgetUrl={widgetUrl} noCacheFlag={noCacheFlag} publicKey={publicKey} addMessage={addMessage}/>);
                     })}
 
-                </article>);
+                </LibraryGroup>);
             })}
 
-        </div>);
+        </LibraryContainer>);
     }
 }

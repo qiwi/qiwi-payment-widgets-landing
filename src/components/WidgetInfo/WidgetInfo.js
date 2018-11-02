@@ -58,7 +58,7 @@ export default class WidgetInfo extends Component {
                           scrolling="no"
                           frameborder="0"/>
 
-            <WidgetCodeTextarea ref={c => this.widgetCodeBlock = c}/>
+            <WidgetCodeTextarea innerRef={c => this.widgetCodeBlock = c}/>
 
             <ButtonCopyCode onClick={() => {
                 this.copyToClipboard(code);
