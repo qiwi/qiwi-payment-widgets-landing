@@ -1,34 +1,42 @@
-import { h, Component } from 'preact';
+import {h, Component} from 'preact';
 
-import './Header.scss';
-
-import logo from './assets/qiwi-logo.svg';
+import {
+    StyledHeader,
+    Description,
+    GradientBlockBottom,
+    GradientBlockTop,
+    TextSection,
+    Title,
+    ToWidgetsLink,
+    WidgetExampleBlock,
+    WidgetExampleButton,
+    WidgetExamplePic,
+    WidgetExampleTitle,
+    WidgetLinkHolder
+} from './styled';
 import widgetPic from './assets/widget-pic.png';
 
-/*<a href={'/?publicKey='+publicKey} class="header__logo"><img src={logo} alt="logo" width="140" height="61" /></a>*/
-
 export default class Header extends Component {
-    render({ idWidgetsBlock, widgetMerchantName, publicKey }) {
+    render({idWidgetsBlock, widgetMerchantName, publicKey}) {
         const defaultWidgetMerchantName = 'Наименование организации';
 
         return (
-            <header class="header">
-                <div className="header__gradient-block-top" />
-                <div className="header__gradient-block-bottom" />
+            <StyledHeader>
+                <GradientBlockTop/>
+                <GradientBlockBottom/>
 
-                <section class="header__call-to-action">
-                    <h1 class="header__title">
+                <TextSection>
+                    <Title>
                         Привлеки своих пользователей, покупателей и читателей к
                         добрым делам!
-                    </h1>
-                    <p class="header__description">
+                    </Title>
+                    <Description>
                         {widgetMerchantName
                             ? `Размести платежную форму у себя на сайте и поддержи ${widgetMerchantName}.`
                             : 'Размести платежную форму у себя на сайте и поддержи благотворительность.'}
-                    </p>
-                    <a
+                    </Description>
+                    <ToWidgetsLink
                         href={`#${idWidgetsBlock}`}
-                        class="header__action"
                         onClick={() => {
                             dataLayer.push({
                                 event: 'to.widgets',
@@ -36,35 +44,34 @@ export default class Header extends Component {
                             });
                         }}>
                         Разместить виджет
-                    </a>
-                </section>
-                <div class="header__illustration">
-                    <img
+                    </ToWidgetsLink>
+                </TextSection>
+                <WidgetExampleBlock>
+                    <WidgetExamplePic
                         src={widgetPic}
                         alt="widgets"
                         width="480"
                         height="720"
-                        class="header__widgets-pic"
                     />
-                    <div class="header__widget-link header__widget-link--upper">
+                    <WidgetLinkHolder className={'upper'}>
                         <a href={'/?publicKey=' + publicKey}>
                             У меня есть сайт
                         </a>
-                    </div>
-                    <div class="header__widget-title">
+                    </WidgetLinkHolder>
+                    <WidgetExampleTitle>
                         {widgetMerchantName || defaultWidgetMerchantName}
-                    </div>
-                    <div class="header__widget-button">Помочь</div>
-                    <div class="header__widget-link header__widget-link--lowwer">
+                    </WidgetExampleTitle>
+                    <WidgetExampleButton>Помочь</WidgetExampleButton>
+                    <WidgetLinkHolder className={'lowwer'}>
                         <a href={'/?publicKey=' + publicKey}>
                             У меня есть сайт
                         </a>
-                    </div>
-                    <div class="header__widget-title header__widget-title--second">
+                    </WidgetLinkHolder>
+                    <WidgetExampleTitle className={'second'}>
                         {widgetMerchantName || defaultWidgetMerchantName}
-                    </div>
-                </div>
-            </header>
+                    </WidgetExampleTitle>
+                </WidgetExampleBlock>
+            </StyledHeader>
         );
     }
 }

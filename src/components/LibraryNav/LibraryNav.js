@@ -50,7 +50,7 @@ export default class LibraryNav extends Component {
                     <TypesList>{group.types.map((type)=>{
                         let href = `#${type}`;
 
-                        return (<NavType class={href === hash ? `selected`: ''}><a href={href} onClick={(e) => {
+                        return (<NavType className={href === hash ? `selected`: ''}><a href={href} onClick={(e) => {
 
                             this.setState({
                                 hash: href

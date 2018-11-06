@@ -13,7 +13,7 @@ export const Link = styled.a`
 export const WidgetIframe = styled.iframe`
     margin-bottom: 39px;
     
-    &bordered {
+    &.bordered {
         border: dashed 1px #9b9b9b;
     }
 `;

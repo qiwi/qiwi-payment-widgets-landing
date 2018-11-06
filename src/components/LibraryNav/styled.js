@@ -75,14 +75,14 @@ export const NavType = styled.li`
         color: #000000;
     }
 
-    .selected {
+    &.selected {
         a{
             font-family: "Museo","Helvetica Neue","Helvetica","Arial",sans-serif;
             font-weight: 900;
         }
     }
 
-    .selected::before {
+    &.selected::before {
         color: #ff8c00;
         font-family: "Museo","Helvetica Neue","Helvetica","Arial",sans-serif;
         font-weight: 900;

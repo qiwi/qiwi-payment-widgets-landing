@@ -26,7 +26,7 @@ export const StyledMessageBox = styled.div`
     opacity: 0;
     -webkit-font-smoothing: antialiased;
     
-    .visible {
+    &.visible {
         -webkit-transform: translateY(0);
         transform: translateY(0);
         opacity: 1;
