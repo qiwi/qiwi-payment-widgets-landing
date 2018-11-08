@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const WidgetsSection = styled.section`
-    background-color: rgb(247,247,247);
     padding: 78px 0 15px 0;
     position: relative;
     min-width: 768px;
