@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, {keyframes} from 'styled-components'
 import {CommonHeader} from "../styled";
 
 export const StyledHeader = styled(CommonHeader)`
@@ -12,6 +12,15 @@ export const RectanglesHolder = styled.div`
     box-sizing: border-box;
     height: inherit;
     width: 100%;
+`;
+
+const Slide = (initialTopOffset) => keyframes`
+  0% {
+    top: ${initialTopOffset + 30}px;
+  }
+  100% {
+    top: ${initialTopOffset - 30}px;
+  }
 `;
 
 export const Rectangle = styled.div`
@@ -28,21 +37,25 @@ export const Rectangle = styled.div`
     
     &:nth-child(4) {
         top: -400px;
+        animation: ${Slide(-400)} 3s infinite alternate;
         left: 240px;
     }
     
     &:nth-child(3) {
         top: -620px;
+        animation: ${Slide(-620)} 3s alternate-reverse infinite;
         left: 120px;
     }
     
     &:nth-child(2) {
         top: -840px;
+        animation: ${Slide(-840)} 3s infinite alternate;
         left: 0;
     }
     
     &:nth-child(1) {
         top: -1060px;
+        animation: ${Slide(-1060)} 3s alternate-reverse infinite;
         left: -120px;
     }  
 `
