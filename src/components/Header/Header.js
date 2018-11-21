@@ -4,8 +4,8 @@ import CharityFundHeader from './CharityFundHeader'
 import DefaultHeader from './DefaultHeader';
 
 export default class Header extends Component {
-    render({merchantMarketingCategoty, ...passedProps}) {
+    render({widgetStyles, ...passedProps}) {
 
-        return (<DefaultHeader {...passedProps}/>);
+        return widgetStyles['CHARITY_LANDING_HEADER'] ? (<CharityFundHeader {...passedProps}/>) : (<DefaultHeader {...passedProps}/>);
     }
 }

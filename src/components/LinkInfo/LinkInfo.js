@@ -3,6 +3,7 @@ import { h, Component } from 'preact';
 import 'url-search-params-polyfill';
 
 import {LinkInfoBlock, ButtonGetCode, LinkCodeTextarea, LinkTextBlock, LinkTitle} from "./styled";
+import Button from '../Button'
 import config from '../../config/default';
 
 
@@ -34,16 +35,16 @@ export default class LinkInfo extends Component {
 
             <LinkCodeTextarea innerRef={ c => this.widgetCodeBlock = c }/>
 
-            <LinkTextBlock>{link}</LinkTextBlock>
+            <LinkTextBlock><a href={link}>{link}</a></LinkTextBlock>
 
-            <ButtonGetCode type="button" disabled={!widgetAliasCode} onClick={() => {
+            <Button type="button" disabled={!widgetAliasCode} onClick={() => {
                     this.copyToClipboard(link);
 
                      dataLayer.push({
                         'event': 'copy.code',
                         'eventAction': `Code of ${id} link copied`
                     });
-                }} > &lt;/&gt; Скопировать ссылку</ButtonGetCode>
+                }} text={'Скопировать ссылку'}/>
         </LinkInfoBlock>);
     }
 }

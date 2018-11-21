@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import {CommonHeader} from "../styled";
+import {CommonHeaderContainer} from "../styled";
 
-export const StyledHeader = styled(CommonHeader)`
+export const StyledHeader = styled(CommonHeaderContainer)`
     background-image: radial-gradient(circle at 15% 13%, rgba(113, 106, 173, 0.0), #d06be4),
         linear-gradient(to bottom, #8b61ce, rgba(141, 98, 207, 0.0)),
         linear-gradient(#865ed4, #865ed4);
@@ -56,7 +56,6 @@ export const Description = styled.p`
     margin: 9px 0 0;
     padding: 0;
     width: 349px;
-    font-family: "Museo","Helvetica Neue","Helvetica","Arial",sans-serif;
     font-size: 21px;
     font-weight: 300;
     line-height: 1.48;
@@ -76,7 +75,6 @@ export const ToWidgetsLink = styled.a`
     width: 240px;
     border-radius: 14px;
     background-color: #ffd54e;
-    font-family: "Museo","Helvetica Neue","Helvetica","Arial",sans-serif;
     font-size: 21px;
     font-weight: 700;
     letter-spacing: -0.2px;

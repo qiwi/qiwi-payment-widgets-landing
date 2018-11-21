@@ -2,7 +2,8 @@ import {h, Component} from 'preact';
 
 import 'url-search-params-polyfill';
 
-import {Container, Link, WidgetIframe, Title, WidgetCodeBlock, WidgetCodeTextarea, ButtonCopyCode} from "./styled";
+import Button from '../Button'
+import {Container, Link, WidgetIframe, Title, WidgetCodeBlock, WidgetCodeTextarea} from "./styled";
 import OptionalRenderer from "../OptionalRenderer/OptionalRenderer";
 
 export default class WidgetInfo extends Component {
@@ -60,14 +61,14 @@ export default class WidgetInfo extends Component {
 
             <WidgetCodeTextarea innerRef={c => this.widgetCodeBlock = c}/>
 
-            <ButtonCopyCode onClick={() => {
+            <Button onClick={() => {
                 this.copyToClipboard(code);
 
                 dataLayer.push({
                     'event': 'copy.code',
                     'eventAction': `Code of ${title} widget copied`
                 });
-            }} disabled={!publicKey}> &lt;/&gt; Скопировать код</ButtonCopyCode>
+            }} disabled={!publicKey} text={'Скопировать код'}/>
 
             <OptionalRenderer when={codeIsHidden}>
                 <WidgetCodeBlock>{code}</WidgetCodeBlock>
