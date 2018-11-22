@@ -1,6 +1,6 @@
 import styled, {keyframes} from 'styled-components'
 import KassaLogoPic from './assets/qiwi_kassa_logo.svg'
-import WidgetSamplePic from './assets/widget-pic.svg'
+import WidgetSamplePic from './assets/widget-pic.png'
 import {CommonHeaderContainer} from "../styled";
 
 export const HeaderContainer = styled(CommonHeaderContainer)`
@@ -27,11 +27,24 @@ export const KassaLogo = styled.div`
     width: 235px;
 `;
 
+export const LogoHolder = styled.div`
+    width: 100%;
+    position: relative;
+`;
+
+export const InfoBlock = styled.div`
+    display: flex;
+    margin-top: 95px;
+    height: 300px;
+    padding: 8px 0 8px 0;
+`;
+
 export const DescriptionBlock = styled.div`
     position: relative;
     z-index: 1;
     max-width: 520px;
-    max-height: 300px;
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
     font-size: 21px;
     font-weight: 500;
@@ -55,6 +68,9 @@ export const DescriptionBlock = styled.div`
 `;
 
 export const WidgetSample = styled.div`
+    position: relative;
+    margin-left: auto;
+    z-index: 1;
     background: url(${WidgetSamplePic}) no-repeat;
     width: 300px;
     height: 300px;
