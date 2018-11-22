@@ -5,6 +5,6 @@ export default class MessageBox extends Component {
 
     render({message}){
 
-        return (<StyledMessageBox class={`${message? 'visible': ''}`}>{message}</StyledMessageBox>);
+        return (<StyledMessageBox className={`${message? 'visible': ''}`}>{message}</StyledMessageBox>);
     }
 }

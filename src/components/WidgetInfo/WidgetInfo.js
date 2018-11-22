@@ -24,7 +24,7 @@ export default class WidgetInfo extends Component {
         this.props.addMessage('Код скопирован в буфер обмена');
 
         this.setState({
-            isCodeHidden: false
+            codeIsHidden: false
         });
 
 
@@ -69,7 +69,7 @@ export default class WidgetInfo extends Component {
                 });
             }} disabled={!publicKey} text={'Скопировать код'}/>
 
-            {codeIsHidden ?
+            {!codeIsHidden ?
                 <WidgetCodeBlock>{code}</WidgetCodeBlock>
                 : null}
         </Container>);
