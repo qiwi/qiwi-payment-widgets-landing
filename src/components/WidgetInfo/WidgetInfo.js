@@ -4,7 +4,6 @@ import 'url-search-params-polyfill';
 
 import Button from '../Button'
 import {Container, Link, WidgetIframe, Title, WidgetCodeBlock, WidgetCodeTextarea} from "./styled";
-import OptionalRenderer from "../OptionalRenderer/OptionalRenderer";
 
 export default class WidgetInfo extends Component {
 
@@ -70,9 +69,9 @@ export default class WidgetInfo extends Component {
                 });
             }} disabled={!publicKey} text={'Скопировать код'}/>
 
-            <OptionalRenderer when={codeIsHidden}>
+            {codeIsHidden ?
                 <WidgetCodeBlock>{code}</WidgetCodeBlock>
-            </OptionalRenderer>
+                : null}
         </Container>);
     }
 }

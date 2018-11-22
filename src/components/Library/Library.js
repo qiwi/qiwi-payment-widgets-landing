@@ -15,11 +15,10 @@ export default class Library extends Component {
             {library.map((group) => {
                 return (<LibraryGroup>
                     <GroupTitle>{group.title}</GroupTitle>
-                    <GroupDescription>{group.desc}</GroupDescription>
+                    {group.desc ? <GroupDescription>{group.desc}</GroupDescription> : null}
                     {group.types.map((type) => {
 
                         if(types[type].form === 'link') {
-
                             return (<LinkInfo id={type} widgetAliasCode={widgetAliasCode} addMessage={addMessage}/>);
                         }
 

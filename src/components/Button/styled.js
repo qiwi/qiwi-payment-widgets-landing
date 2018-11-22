@@ -6,10 +6,10 @@ export const StyledButton = styled.button`
     width: 252px;
     height: 58px;
     border-radius: 100px;
-    border: 1px #e6e6e6;
-    background: 
-        url(${copyIcon}) no-repeat left
-        #ffffff;
+    border: solid 1px #e6e6e6;
+    display: flex;
+    justify-content: center;
+    background: #ffffff;
     padding-left: 16px;
     background-origin: content-box;
     
@@ -28,9 +28,8 @@ export const StyledButton = styled.button`
 
     &:hover {
         background-color: #ffffff;
-        box-shadow: 0 12px 18px 0 rgba(160, 160, 160, 0.5);
+        box-shadow: 0 5px 18px 0 rgba(160, 160, 160, 0.5);
         border: solid 1px #e6e6e6;
-
     }
 
     &:active {
@@ -55,4 +54,12 @@ export const StyledButton = styled.button`
             box-shadow: none;
         }
     }
+`;
+
+export const CopyIcon = styled.div`
+     background: url(${copyIcon}) no-repeat;
+     background-size: contain;
+     margin-right: 9px;
+     width: 24px;
+     height: 24px;
 `;

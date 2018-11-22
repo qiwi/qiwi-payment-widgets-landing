@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     text-align: left;
-    margin: 0 0 80px;
+    margin: 34px 0 80px;
 `;
 
 export const Link = styled.a`
@@ -44,11 +44,13 @@ export const WidgetCodeBlock = styled.div`
     line-height: 1.31;
     text-align: left;
     color: #000000;
+    background-color: rgba(216,216,216,0.2);
     word-break: break-word;
     margin-top: 35px;
     transition: all 2s ease-out;
-    opacity: 1;
+    border-radius: 10px;
     height: 100%;
+    padding: 20px 24px;
     -webkit-user-select: all;
     -moz-user-select: all;
     -ms-user-select: all;     

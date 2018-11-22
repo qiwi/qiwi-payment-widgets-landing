@@ -31,7 +31,7 @@ export default class LinkInfo extends Component {
         const link = `${config.url}${widgetAliasCode}`;
 
         return (<LinkInfoBlock id={id}>
-            <LinkTitle><a href={`#${id}`}/></LinkTitle>
+            <LinkTitle><a href={`#${id}`} target={'_blank'}/></LinkTitle>
 
             <LinkCodeTextarea innerRef={ c => this.widgetCodeBlock = c }/>
 

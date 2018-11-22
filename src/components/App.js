@@ -10,6 +10,7 @@ import ThankingBlock from './ThankingBlock';
 
 import appSettings from './appSettings';
 import config from '../config/default';
+import {stylesArrayToObject} from '../helpers/styles'
 
 export default class App extends Component {
 
@@ -44,11 +45,13 @@ export default class App extends Component {
         if(merchantSitePublicKey || widgetAliasCode) {
             this.getWidget(merchantSitePublicKey, widgetAliasCode, noCacheFlag).then(data => {
                 if(data.result.widgetMerchantName) {
-                    const widgetStyles = this.stylesArrayToObject(data.result.widgetStyles);
+                    const widgetStyles = stylesArrayToObject(data.result.widgetStyles);
 
                     self.setState({
                         widgetMerchantName: data.result.widgetMerchantName,
                         merchantContact: data.result.widgetMerchantEmail,
+                        widgetButtonText: data.result.widgetButtonText,
+                        merchantOffer: data.result.widgetMerchantOffer,
                         widgetAliasCode: data.result.widgetAliasCode,
                         merchantSitePublicKey: data.result.merchantSitePublicKey,
                         widgetStyles,
@@ -154,7 +157,7 @@ export default class App extends Component {
         });
     }
 
-    render({},{message, widgetMerchantName, widgetStyles, merchantSitePublicKey, widgetAliasCode, merchantContact, merchantNotVeryfied, noCacheFlag}){
+    render({},{message, widgetMerchantName, widgetStyles, merchantSitePublicKey, widgetButtonText, merchantOffer, widgetAliasCode, merchantContact, merchantNotVeryfied, noCacheFlag}){
 
         const {idWidgetsBlock} = this.appSettings;
 
@@ -162,7 +165,7 @@ export default class App extends Component {
 
         return (<div class={merchantNotVeryfied?'page--missed-public-key-error': ''}>
             {merchantNotVeryfied?<div className="error-panel"><div className="error-panel__text">Для участия в партнерской программе вам требуется получить персональную ссылку. Если у вас ее нет и вы хотели бы ее получить, свяжитесь с нами по адресу <a href="mailto:widget@qiwi.com" onClick={this.analyticsHandler('make.email', 'Make email to QIWI from error panel')}>widget@qiwi.com</a></div></div>:null}
-            <Header widgetStyles={widgetStyles} idWidgetsBlock={idWidgetsBlock} widgetMerchantName={widgetMerchantName} publicKey={merchantSitePublicKey}/>
+            <Header widgetStyles={widgetStyles} idWidgetsBlock={idWidgetsBlock} widgetMerchantName={widgetMerchantName} widgetButtonText={widgetButtonText} merchantOffer={merchantOffer} publicKey={merchantSitePublicKey}/>
             <main>
                 <About/>
                 <Widgets {...this.appSettings} widgetUrl={config.widgetUrl}  publicKey={merchantSitePublicKey} noCacheFlag={noCacheFlag} widgetAliasCode={widgetAliasCode} addMessage={this.addMessage}/>

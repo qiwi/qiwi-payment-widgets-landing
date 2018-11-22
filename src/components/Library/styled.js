@@ -29,9 +29,9 @@ export const GroupTitle = styled.h2`
 
 export const GroupDescription = styled.p`
     font-family: "Museo","Helvetica Neue","Helvetica","Arial",sans-serif;
-    font-size: 26px;
+    font-size: 20px;
     font-weight: 300;
-    line-height: 1.23;
+    line-height: 1.4;
     text-align: left;
     color: #000000;
     margin: 34px 0 80px;

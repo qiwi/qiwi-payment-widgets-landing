@@ -70,19 +70,42 @@ export const DescriptionBlock = styled.div`
 export const WidgetSample = styled.div`
     position: relative;
     margin-left: auto;
+    color: #000000;
     z-index: 1;
     background: url(${WidgetSamplePic}) no-repeat;
     width: 300px;
     height: 300px;
 `;
 
-export const ButtonPlaceWidget = styled.button`
+export const SampleTitle = styled.div`
+    font-size: 16px;
+    font-weight: 900;
+    height: 19px;
+    text-align: center;
+    margin: 27px auto 0;
+`;
+
+export const SampleButtonText = styled.div`
+    font-size: 16px;
+    font-weight: 500;
+    height: 19px;
+    text-align: center;
+    color: #ffffff;
+    margin-top: 91px;
+`;
+
+export const ToWidgetsLink = styled.a`
     width: 240px;
     height: 60px;
     margin-top: 12px;
     background: #ffffff;
     border: 1px solid #e6e6e6;
     border-radius: 99px;
+    color: #000000;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     font-size: 18px;
     font-weight: 500;
     font-style: normal;

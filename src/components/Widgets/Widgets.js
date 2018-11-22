@@ -23,7 +23,7 @@ export default class Widgets extends Component {
 
     render({idWidgetsBlock, widgetsLibrary, widgetAliasCode, widgetUrl, publicKey, noCacheFlag, addMessage}, {topForPos}){
         return (<WidgetsSection id={idWidgetsBlock}>
-            <Title>Выберите нужный размер и скопируйте код для внедрения на собственный сайт</Title>
+            <Title>Выберите нужный элемент и скопируйте код для внедрения</Title>
             <WidgetsLibraryBlock innerRef={c => this.widgetLibraryBlock = c }>
                 <LibraryNav widgetsLibrary={widgetsLibrary} topForPos={topForPos} publicKey={publicKey}/>
                 <Library widgetsLibrary={{...widgetsLibrary,widgetUrl,publicKey,noCacheFlag,addMessage,widgetAliasCode}}/>
