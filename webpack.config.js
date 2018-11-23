@@ -85,6 +85,11 @@ module.exports = {
     },
     plugins: ([
         new webpack.NoEmitOnErrorsPlugin(),
+        new webpack.LoaderOptionsPlugin({
+            options: {
+                context: process.cwd()
+            }
+        }),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(ENV)
         }),
