@@ -18,7 +18,7 @@ import Oferta from '../../Oferta'
 
 
 export default function DefaultHeader({idWidgetsBlock, widgetMerchantName, widgetButtonText, merchantOffer}) {
-    let a = 'kjljolj';
+
     return (<HeaderContainer>
         <ContentBlock>
             <LogoHolder>
