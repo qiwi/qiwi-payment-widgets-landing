@@ -31,10 +31,6 @@ export const LinkTextBlock = styled.div`
     -ms-user-select: all;
     user-select: all;
     margin: -44px 0 36px 0;
-    a {
-        color: #0055bb;
-        text-decoration: none;
-    }
 `;
 
 export const LinkCodeTextarea = styled.textarea`

@@ -1,7 +1,7 @@
 import { h, Component } from 'preact';
 
 import WidgetInfo from '../WidgetInfo';
-import LinkInfo from '../LinkInfo';
+import PreorderLinkInfo from '../PreorderLinkInfo';
 import {LibraryContainer, LibraryGroup, GroupDescription, GroupTitle} from "./styled";
 
 export default class Library extends Component {
@@ -19,7 +19,7 @@ export default class Library extends Component {
                     {group.types.map((type) => {
 
                         if(types[type].form === 'link') {
-                            return (<LinkInfo id={type} widgetAliasCode={widgetAliasCode} addMessage={addMessage}/>);
+                            return (<PreorderLinkInfo id={type} widgetAliasCode={widgetAliasCode} addMessage={addMessage}/>);
                         }
 
                         return (<WidgetInfo id={type} widget={types[type]} widgetUrl={widgetUrl} noCacheFlag={noCacheFlag} publicKey={publicKey} addMessage={addMessage}/>);

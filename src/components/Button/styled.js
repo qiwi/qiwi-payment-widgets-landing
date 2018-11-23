@@ -44,9 +44,6 @@ export const StyledButton = styled.button`
         color: #CCCCCC;
         border: solid 1px #CCCCCC;
         cursor: not-allowed;
-        background: 
-            url(${copyIconDisabled}) no-repeat left
-            #ffffff;
         background-origin: content-box;
 
         &:hover {
@@ -57,7 +54,7 @@ export const StyledButton = styled.button`
 `;
 
 export const CopyIcon = styled.div`
-     background: url(${copyIcon}) no-repeat;
+     background: url(${(props) => props.disabled ? copyIconDisabled: copyIcon}) no-repeat;
      background-size: contain;
      margin-right: 9px;
      width: 24px;

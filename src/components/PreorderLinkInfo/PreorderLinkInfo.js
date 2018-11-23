@@ -5,10 +5,10 @@ import 'url-search-params-polyfill';
 import {LinkInfoBlock, ButtonGetCode, LinkCodeTextarea, LinkTextBlock, LinkTitle} from "./styled";
 import Button from '../Button'
 import config from '../../config/default';
+import Link from '../Link';
 
 
-
-export default class LinkInfo extends Component {
+export default class PreorderLinkInfo extends Component {
 
     constructor(props) {
         super(props);
@@ -35,7 +35,7 @@ export default class LinkInfo extends Component {
 
             <LinkCodeTextarea innerRef={ c => this.widgetCodeBlock = c }/>
 
-            <LinkTextBlock><a href={link}>{link}</a></LinkTextBlock>
+            <LinkTextBlock><Link href={link}>{link}</Link></LinkTextBlock>
 
             <Button type="button" disabled={!widgetAliasCode} onClick={() => {
                     this.copyToClipboard(link);
