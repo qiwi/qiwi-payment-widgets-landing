@@ -73,7 +73,7 @@ export const WidgetSample = styled.div`
     color: #000000;
     z-index: 1;
     background: url(${WidgetSamplePic}) no-repeat;
-    width: 300px;
+    width: 304px;
     height: 300px;
 `;
 

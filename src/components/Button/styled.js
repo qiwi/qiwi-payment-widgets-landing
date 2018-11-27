@@ -3,7 +3,7 @@ import copyIcon from './assets/copyIcon.svg';
 import copyIconDisabled from './assets/copyIconDisabled.svg';
 
 export const StyledButton = styled.button`
-    width: 252px;
+    width: 262px;
     height: 58px;
     border-radius: 100px;
     border: solid 1px #e6e6e6;
@@ -54,9 +54,9 @@ export const StyledButton = styled.button`
 `;
 
 export const CopyIcon = styled.div`
-     background: url(${(props) => props.disabled ? copyIconDisabled: copyIcon}) no-repeat;
-     background-size: contain;
-     margin-right: 9px;
-     width: 24px;
-     height: 24px;
+    background: url(${(props) => props.disabled ? copyIconDisabled: copyIcon}) no-repeat;
+    background-size: contain;
+    margin-right: 7px;
+    width: 21px;
+    height: 21px;
 `;

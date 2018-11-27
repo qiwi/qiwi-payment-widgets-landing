@@ -52,5 +52,5 @@ export const MastercardIcon = styled(PaymentType)`
 export const QiwiIcon = styled(PaymentType)`
     background-image: url(${(props) => props.enableSvg ? qiwiSvg: qiwiPng});
     width: 45px;
-    height: 17px;
+    height: 13px;
 `;

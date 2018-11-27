@@ -105,7 +105,7 @@ export default {
                 }
             },
             'bigButton': {
-                name: 'большая',
+                name: '220px x 100px',
                 link: 'widgets/big-button-220x100',
                 transparent: true,
                 title: '220 px x 100 px большая на прозрачном фоне',

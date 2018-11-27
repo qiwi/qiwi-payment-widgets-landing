@@ -50,6 +50,10 @@ export const NavType = styled.li`
     list-style-type: none;
     margin: 14px 0 0;
     position: relative;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.28;
+    letter-spacing: normal;
 
     &::before {
         content: '—';
