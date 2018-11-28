@@ -18,7 +18,7 @@ export const AboutTitle = styled.h1`
     }
 `;
 
-export const AboutParagraphs = styled.ol`
+export const AboutParagraphList = styled.ol`
     text-align: center;
     list-style-type: none;
     margin: 57px auto 0;
@@ -29,7 +29,7 @@ export const AboutParagraphs = styled.ol`
     }
 `;
 
-export const ParagraphsItem = styled.li`
+export const AboutParagraphListItem = styled.li`
     display: inline-block;
     width: 224px;
     font-family: "Museo","Helvetica Neue","Helvetica","Arial",sans-serif;
