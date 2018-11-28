@@ -55,4 +55,8 @@ export const WidgetCodeBlock = styled.div`
     -moz-user-select: all;
     -ms-user-select: all;     
     user-select: all;
+    
+    span {
+        color: #9b9b9b;
+    }
 `;

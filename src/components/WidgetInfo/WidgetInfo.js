@@ -70,7 +70,10 @@ export default class WidgetInfo extends Component {
             }} disabled={!publicKey} text={'Скопировать код'}/>
 
             {!codeIsHidden ?
-                <WidgetCodeBlock>{code}</WidgetCodeBlock>
+                <WidgetCodeBlock>{`<iframe `}
+                    src=<span>"{urlWidget}"</span> width=<span>"{width}"</span> height=<span>"{height}"</span>
+                    allowTransparency=<span>"true"</span> scrolling=<span>"no"</span> frameBorder=<span>"0"</span>{`></iframe>`}
+                </WidgetCodeBlock>
                 : null}
         </Container>);
     }
