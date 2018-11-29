@@ -1,9 +1,13 @@
-.about {
+import styled from 'styled-components';
+import arc from './assets/arc.svg';
+
+export const AboutSection = styled.section`
     padding: 89px 0 128px;
     min-width: 768px;
-}
+    background: #f5f5f5;
+`;
 
-.about__title {
+export const AboutTitle = styled.h1`
     width: 830px;
 
     @media (max-width: 950px) {
@@ -12,9 +16,9 @@
         line-height: 1.44;
 
     }
-}
+`;
 
-.about__paragraphs {
+export const AboutParagraphList = styled.ol`
     text-align: center;
     list-style-type: none;
     margin: 57px auto 0;
@@ -23,9 +27,9 @@
     @media (max-width: 950px) {
         margin-top: 55px;
     }
-}
+`;
 
-.about__paragraphs li {
+export const AboutParagraphListItem = styled.li`
     display: inline-block;
     width: 224px;
     font-family: "Museo","Helvetica Neue","Helvetica","Arial",sans-serif;
@@ -47,7 +51,7 @@
         content: '';
         width: 119px;
         height: 16px;
-        background: url('assets/arc.svg');
+        background: url(${arc});
         position: absolute;
         right: -59px;
         top: 26px;
@@ -64,16 +68,13 @@
 
     &:last-child::before {
         display: none;
-    }
+    }   
+`;
 
-}
-
-
-.about__marker {
+export const AboutMarker = styled.div`
     font-family: "Museo","Helvetica Neue","Helvetica","Arial",sans-serif;
     font-size: 72px;
     font-weight: 700;
     text-align: center;
-    color: #ff8c00;
     margin-bottom: 15px;
-}
+`;

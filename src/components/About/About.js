@@ -1,17 +1,32 @@
-import { h, Component } from 'preact';
+import {h, Component} from 'preact';
 
-import './About.scss';
+import {AboutSection, AboutTitle, AboutParagraphList, AboutParagraphListItem, AboutMarker} from './styled';
 
 const About = () => (
-    <section class="about">
-        <h1 class="about__title">Разнообразие форматов отображения. Простота установки.</h1>
-        <ol class="about__paragraphs">
-            <li><div class="about__marker">1</div>Скопируйте код виджета</li>
-            <li><div class="about__marker">2</div>Откройте HTML код вашей страницы для редактирования</li>
-            <li><div class="about__marker">3</div>Вставьте код виджета в необходимое место страницы</li>
-            <li><div class="about__marker">4</div>Сохраните HTML код страницы и обновите ее на сайте</li>
-        </ol>
-    </section>
+    <AboutSection>
+        <AboutTitle>Разнообразие форматов отображения. Простота установки.</AboutTitle>
+        <AboutParagraphList>
+            <AboutParagraphListItem>
+                <AboutMarker>1</AboutMarker>
+                Скопируйте код виджета
+            </AboutParagraphListItem>
+            <AboutParagraphListItem>
+                <AboutMarker>2</AboutMarker>
+                Откройте HTML код вашей страницы для
+                редактирования
+            </AboutParagraphListItem>
+            <AboutParagraphListItem>
+                <AboutMarker>3</AboutMarker>
+                Вставьте код виджета в необходимое место
+                страницы
+            </AboutParagraphListItem>
+            <AboutParagraphListItem>
+                <AboutMarker>4</AboutMarker>
+                Сохраните HTML код страницы и обновите ее на
+                сайте
+            </AboutParagraphListItem>
+        </AboutParagraphList>
+    </AboutSection>
 )
 
 export default About;

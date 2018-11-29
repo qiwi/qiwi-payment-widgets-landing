@@ -1,6 +1,5 @@
 import { h, Component } from 'preact';
-
-import './LibraryNav.scss';
+import {StyledLibraryNav, LibraryGroup, LibraryGroupName, NavigationsList, NavType, TypesList} from './styled';
 
 export default class LibraryNav extends Component {
 
@@ -44,36 +43,28 @@ export default class LibraryNav extends Component {
 
         };
 
-        return (<nav class="library-nav"  style={posForBlock()}>
-            <ul>{navigation.map((group) => {
-                return (<li class="library-nav__group">
-                    <span class="library-nav__name-group">{group.name}</span>
-                    <ul class="library-nav__types">{group.types.map((type)=>{
-
-                        let anchorState = 'library-nav__type';
-
+        return (<StyledLibraryNav style={posForBlock()}>
+            <NavigationsList>{navigation.map((group) => {
+                return (<LibraryGroup>
+                    <LibraryGroupName>{group.name}</LibraryGroupName>
+                    <TypesList>{group.types.map((type)=>{
                         let href = `#${type}`;
 
-                        if(href === hash) {
-                            anchorState = `${anchorState} library-nav__type--selected`;
-                        }
-
-                        return (<li class={anchorState}><a href={href} onClick={(e) => {
+                        return (<NavType className={href === hash ? `selected`: ''}><a href={href} onClick={(e) => {
 
                             this.setState({
                                 hash: href
                             });
-
 
                             dataLayer.push({
                                 'event': 'to.widget',
                                 'eventAction': `Transition to ${types[type].name} widget by widget menu`
                             });
 
-                        }}>{types[type].name}</a></li>);
-                    })}</ul>
-                </li>);
-            })}</ul>
-        </nav>);
+                        }}>{types[type].name}</a></NavType>);
+                    })}</TypesList>
+                </LibraryGroup>);
+            })}</NavigationsList>
+        </StyledLibraryNav>);
     }
 }
