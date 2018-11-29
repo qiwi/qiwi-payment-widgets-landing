@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const path = require('path');
 
 const ENV = process.env.NODE_ENV || 'development';
@@ -83,6 +84,26 @@ module.exports = {
             }
         ]
     },
+    optimization: {
+        minimizer: [].concat(ENV === 'production' ? [
+            new UglifyJsPlugin({
+                parallel: true,
+                uglifyOptions: {
+                    compress: false,
+                    ecma: 6,
+                    mangle: true,
+                    warnings: false,
+                    extractComments: 'all',
+                    parse: {},
+                    output: null,
+                    toplevel: false,
+                    nameCache: null,
+                    ie8: false,
+                    keep_fnames: false,
+                }
+            })
+        ]: [])
+    },
     plugins: ([
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.LoaderOptionsPlugin({
@@ -101,16 +122,7 @@ module.exports = {
             'Promise': 'es6-promise',
             'fetch': 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
         })
-    ]).concat(ENV === 'production' ? [
-        new webpack.optimize.UglifyJsPlugin({
-            output: {
-                comments: false
-            },
-            compress: {
-                warnings: false
-            }
-        })
-    ] : [
+    ]).concat(ENV === 'production' ? [] : [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin()
     ]),
