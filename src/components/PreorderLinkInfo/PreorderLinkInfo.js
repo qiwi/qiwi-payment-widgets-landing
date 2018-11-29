@@ -2,12 +2,13 @@ import { h, Component } from 'preact';
 
 import 'url-search-params-polyfill';
 
-import './LinkInfo.scss';
+import {LinkInfoBlock, ButtonGetCode, LinkCodeTextarea, LinkTextBlock, LinkTitle} from "./styled";
+import Button from '../Button'
 import config from '../../config/default';
+import Link from '../Link';
 
 
-
-export default class LinkInfo extends Component {
+export default class PreorderLinkInfo extends Component {
 
     constructor(props) {
         super(props);
@@ -29,21 +30,21 @@ export default class LinkInfo extends Component {
 
         const link = `${config.url}${widgetAliasCode}`;
 
-        return (<div class="link-info" id={id}>
-            <h3 class="link-info__title"><a href={`#${id}`}></a></h3>
+        return (<LinkInfoBlock id={id}>
+            <LinkTitle><a href={`#${id}`} target={'_blank'}/></LinkTitle>
 
-            <textarea class="link-info__code-textarea" ref={ c => this.widgetCodeBlock = c }></textarea>
+            <LinkCodeTextarea innerRef={ c => this.widgetCodeBlock = c }/>
 
-            <div class="link-info__link-text">{link}</div>
+            <LinkTextBlock><Link href={link}>{link}</Link></LinkTextBlock>
 
-            <button type="button" class="link-info__get-code-button" disabled={!widgetAliasCode} onClick={() => {
+            <Button type="button" disabled={!widgetAliasCode} onClick={() => {
                     this.copyToClipboard(link);
 
                      dataLayer.push({
                         'event': 'copy.code',
                         'eventAction': `Code of ${id} link copied`
                     });
-                }} > &lt;/&gt; Скопировать ссылку</button>
-        </div>);
+                }} text={'Скопировать ссылку'}/>
+        </LinkInfoBlock>);
     }
 }

@@ -1,10 +1,9 @@
-import { h, Component } from 'preact';
+import {h, Component} from 'preact';
 
 import 'url-search-params-polyfill';
 
-import './WidgetInfo.scss';
-
-
+import Button from '../Button'
+import {Container, Link, WidgetIframe, Title, WidgetCodeBlock, WidgetCodeTextarea} from "./styled";
 
 export default class WidgetInfo extends Component {
 
@@ -12,7 +11,7 @@ export default class WidgetInfo extends Component {
         super(props);
 
         this.state = {
-            isCodeHidden: true
+            codeIsHidden: true
         }
     }
 
@@ -25,18 +24,17 @@ export default class WidgetInfo extends Component {
         this.props.addMessage('Код скопирован в буфер обмена');
 
         this.setState({
-            isCodeHidden: false
+            codeIsHidden: false
         });
-
 
 
         document.execCommand("Copy");
 
     }
 
-    render({widget, id, widgetUrl, noCacheFlag, publicKey}, {isCodeHidden}){
+    render({widget, id, widgetUrl, noCacheFlag, publicKey}, {codeIsHidden}) {
 
-        const { title, height, width, transparent, params={}, link} = widget;
+        const {title, height, width, transparent, params = {}, link} = widget;
 
         params['publicKey'] = publicKey;
 
@@ -46,27 +44,37 @@ export default class WidgetInfo extends Component {
 
         const code = `<iframe width="${width}" height="${height}" src="${urlWidget}" allowtransparency="true" scrolling="no" frameborder="0"></iframe>`;
 
-        if(noCacheFlag) {
+        if (noCacheFlag) {
             urlWidget += `&noCache=${noCacheFlag}`;
         }
 
-        return (<div class="widget-info" id={id}>
-            <h3 class="widget-info__title"><a href={`#${id}`}>{title}</a></h3>
+        return (<Container id={id}>
+            <Title><Link href={`#${id}`}>{title}</Link></Title>
 
-            <iframe width={width} height={height} src={urlWidget} allowtransparency="true" scrolling="no" frameborder="0" class="widget-info__iframe"></iframe>
+            <WidgetIframe width={width}
+                          height={height}
+                          src={urlWidget}
+                          allowtransparency="true"
+                          scrolling="no"
+                          frameborder="0"/>
 
-            <textarea class="widget-info__code-textarea" ref={ c => this.widgetCodeBlock = c }></textarea>
+            <WidgetCodeTextarea innerRef={c => this.widgetCodeBlock = c}/>
 
-            <button type="button" class="widget-info__get-code-button" onClick={() => {
-                    this.copyToClipboard(code);
+            <Button onClick={() => {
+                this.copyToClipboard(code);
 
-                     dataLayer.push({
-                        'event': 'copy.code',
-                        'eventAction': `Code of ${title} widget copied`
-                    });
-                }} disabled={!publicKey}> &lt;/&gt; Скопировать код</button>
+                dataLayer.push({
+                    'event': 'copy.code',
+                    'eventAction': `Code of ${title} widget copied`
+                });
+            }} disabled={!publicKey} text={'Скопировать код'}/>
 
-            <div class={`widget-info__code ${isCodeHidden?'widget-info__code--hidden':''}`}>{code}</div>
-        </div>);
+            {!codeIsHidden ?
+                <WidgetCodeBlock>{`<iframe `}
+                    src=<span>"{urlWidget}"</span> width=<span>"{width}"</span> height=<span>"{height}"</span>
+                    allowTransparency=<span>"true"</span> scrolling=<span>"no"</span> frameBorder=<span>"0"</span>{`></iframe>`}
+                </WidgetCodeBlock>
+                : null}
+        </Container>);
     }
 }

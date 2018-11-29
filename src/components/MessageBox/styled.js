@@ -1,4 +1,6 @@
-.message-box {
+import styled from 'styled-components'
+
+export const StyledMessageBox = styled.div`
     outline: none;
     position: fixed;
     box-sizing: border-box;
@@ -23,10 +25,10 @@
     transition: transform 0.3s, opacity 0.3s;
     opacity: 0;
     -webkit-font-smoothing: antialiased;
-}
-
-.message-box--visible {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-    opacity: 1;
-}
+    
+    &.visible {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        opacity: 1;
+    }
+`;
