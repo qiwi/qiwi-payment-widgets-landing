@@ -74,7 +74,7 @@ export const WidgetSample = styled.div`
     z-index: 1;
     background: url(${WidgetSamplePic}) no-repeat;
     width: 304px;
-    height: 300px;
+    height: 304px;
 `;
 
 export const SampleTitle = styled.div`
