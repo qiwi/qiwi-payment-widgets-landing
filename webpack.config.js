@@ -7,6 +7,7 @@ const path = require('path');
 const ENV = process.env.NODE_ENV || 'development';
 
 module.exports = {
+    mode: ENV === 'production'? 'production': 'development',
     context: path.resolve(__dirname, "src"),
     entry: './main.js',
 
@@ -89,7 +90,7 @@ module.exports = {
             new UglifyJsPlugin({
                 parallel: true,
                 uglifyOptions: {
-                    compress: false,
+                    compress: true,
                     ecma: 6,
                     mangle: true,
                     warnings: false,

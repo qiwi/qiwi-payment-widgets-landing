@@ -12,6 +12,7 @@ export const StyledButton = styled.button`
     background: #ffffff;
     padding-left: 16px;
     background-origin: content-box;
+    align-items: center;
     
     font-size: 19px;
     font-weight: 500;
