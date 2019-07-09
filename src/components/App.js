@@ -58,7 +58,6 @@ export default class App extends Component {
                         widgetStyles,
                         noCacheFlag: noCacheFlag
                     });
-                    self.changeTabTitle(data.result.widgetMerchantName);
                 }
             });
         } else {
@@ -136,10 +135,6 @@ export default class App extends Component {
         });
 
         this.deleteMessage();
-    }
-
-    changeTabTitle = (title) => {
-        document.title = title;
     }
 
     deleteMessage = () => {
