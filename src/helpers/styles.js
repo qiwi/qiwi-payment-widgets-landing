@@ -1,6 +1,5 @@
 export const EWidgetStyleCode = Object.freeze({
-    CHARITY_LANDING_HEADER: 'CHARITY_LANDING_HEADER',
-    PAY_FORM_MERCHANT_NAME: 'PAY_FORM_MERCHANT_NAME'
+    CHARITY_LANDING_HEADER: 'CHARITY_LANDING_HEADER'
 });
 
 export function stylesArrayToObject(styles) {

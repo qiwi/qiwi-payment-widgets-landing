@@ -11,7 +11,7 @@ import QiwiFooter from './QiwiFooter';
 import PageNotFound from './PageNotFound';
 import appSettings from './appSettings';
 import config from '../config/default';
-import {stylesArrayToObject, EWidgetStyleCode} from '../helpers/styles'
+import {stylesArrayToObject} from '../helpers/styles'
 
 export default class App extends Component {
 
@@ -49,7 +49,7 @@ export default class App extends Component {
                     const widgetStyles = stylesArrayToObject(data.result.widgetStyles);
 
                     self.setState({
-                        widgetMerchantName: widgetStyles[EWidgetStyleCode.PAY_FORM_MERCHANT_NAME] || data.result.widgetMerchantName,
+                        widgetMerchantName: data.result.widgetMerchantName,
                         merchantContact: data.result.widgetMerchantEmail,
                         widgetButtonText: data.result.widgetButtonText,
                         merchantOffer: data.result.widgetMerchantOffer,
